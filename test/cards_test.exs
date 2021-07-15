@@ -2,12 +2,8 @@ defmodule CardsTest do
   use ExUnit.Case
   doctest Cards
 
-  test "creates a card desk" do
-    assert Cards.create_desk() == ["Ace", "Two", "Three"]
-  end
-
-  test "checks if deck contains a card" do
-    assert Cards.contains?(Cards.create_desk(), "Two") == true
-    assert Cards.contains?(Cards.create_desk(), "King") == false
+  test "create_deck makes 20 cards" do
+    deck_length = length(Cards.create_deck)
+    assert deck_length == 20
   end
 end
