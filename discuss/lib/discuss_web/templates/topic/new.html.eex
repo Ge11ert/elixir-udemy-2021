@@ -4,7 +4,14 @@
   <%= form_for @changeset, Routes.topic_path(@conn, :create), fn f -> %>
     <div class="form-group">
       <%= text_input f, :title, placeholder: "Title", class: "form-control" %>
+      <%= error_tag f, :title %>
     </div>
+
+    <%= if assigns[:post] do%>
+      <div class="form-group">
+        <p>A new topic was created successfully</p>
+      </div>
+    <% end %>
 
     <%= submit "Save Topic", class: "btn btn-primary" %>
   <% end %>
