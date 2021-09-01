@@ -13,7 +13,7 @@ defmodule DiscussWeb.TopicController do
 
   def create(conn, params) do
     case Topics.create_topic(params) do
-      {:ok, post} ->
+      {:ok, _topic} ->
         conn
         |> put_flash(:info, "Topic created")
         |> redirect(to: Routes.topic_path(conn, :index))
