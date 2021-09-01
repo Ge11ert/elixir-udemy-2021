@@ -33,4 +33,8 @@ defmodule Discuss.Topics do
       {:error, changeset} -> {:error, changeset, old_topic}
     end
   end
+
+  def delete_topic!(%{"id" => topic_id}) do
+    Repo.get!(Topic, topic_id) |> Repo.delete!
+  end
 end
