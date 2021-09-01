@@ -3,7 +3,10 @@
 <ul class="collection">
   <%= for topic <- @topics do %>
     <li class="collection-item">
-      <%= topic.title %>
+      <span><%= topic.title %></span>
+      <span class="right">
+        <%= link "Edit", to: Routes.topic_path(@conn, :edit, topic)%>
+      </span>
     </li>
   <% end %>
 </ul>

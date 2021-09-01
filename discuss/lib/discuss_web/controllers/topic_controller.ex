@@ -20,4 +20,19 @@ defmodule DiscussWeb.TopicController do
       {:error, changeset} -> render(conn, "new.html", changeset: changeset)
     end
   end
+
+  def edit(conn, params) do
+    [topic: topic, changeset: changeset] = Topics.get_topic_changeset(params)
+    render(conn, "edit.html", changeset: changeset, topic: topic)
+  end
+
+  def update(conn, params) do
+    case Topics.update_topic(params) do
+      {:ok, _topic} ->
+        conn
+        |> put_flash(:info, "Topic updated")
+        |> redirect(to: Routes.topic_path(conn, :index))
+      {:error, changeset, old_topic} -> render(conn, "edit.html", changeset: changeset, topic: old_topic)
+    end
+  end
 end
