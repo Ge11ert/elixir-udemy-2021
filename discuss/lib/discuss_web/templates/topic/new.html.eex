@@ -7,12 +7,6 @@
       <%= error_tag f, :title %>
     </div>
 
-    <%= if assigns[:post] do%>
-      <div class="form-group">
-        <p>A new topic was created successfully</p>
-      </div>
-    <% end %>
-
     <%= submit "Save Topic", class: "btn btn-primary" %>
   <% end %>
 </section>

@@ -7,3 +7,9 @@
     </li>
   <% end %>
 </ul>
+
+<div class="fixed-action-btn">
+  <%= link to: Routes.topic_path(@conn, :new), class: "btn-floating btn-large waves-light waves-effect blue"  do %>
+    Add
+  <% end %>
+</div>
