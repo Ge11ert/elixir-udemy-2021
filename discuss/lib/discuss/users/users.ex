@@ -2,6 +2,10 @@ defmodule Discuss.Users do
   alias Discuss.Users.User
   alias Discuss.Repo
 
+  def get_user(user_id) do
+    Repo.get(User, user_id)
+  end
+
   def sign_user_in(user_params) do
     case is_user_exists?(user_params) do
       nil -> save_user(user_params)
