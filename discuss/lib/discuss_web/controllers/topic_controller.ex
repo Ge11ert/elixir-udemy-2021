@@ -49,6 +49,11 @@ defmodule DiscussWeb.TopicController do
     |> redirect(to: Routes.topic_path(conn, :index))
   end
 
+  def show(conn, params) do
+    topic = Topics.get_topic!(params)
+    render(conn, "show.html", topic: topic)
+  end
+
   defp check_topic_owner(conn, _params) do
     %{params: conn_params, assigns: %{user: user}} = conn
 
