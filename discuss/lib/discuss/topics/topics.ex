@@ -12,10 +12,12 @@ defmodule Discuss.Topics do
     |> Topic.changeset()
   end
 
-  def create_topic(%{"topic" => topic}) do
-    %Topic{}
-    |> Topic.changeset(topic)
-    |> Repo.insert()
+  def create_topic(%{"topic" => topic}, user) do
+    changeset = user
+      |> Ecto.build_assoc(:topics)
+      |> Topic.changeset(topic)
+
+    Repo.insert(changeset)
   end
 
   def get_topic_changeset(%{"id" => topic_id}) do
