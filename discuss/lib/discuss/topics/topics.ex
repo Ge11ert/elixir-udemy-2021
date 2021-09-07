@@ -34,6 +34,11 @@ defmodule Discuss.Topics do
     Repo.get!(Topic, topic_id)
   end
 
+  def get_topic_with_comments(%{"id" => topic_id}) do
+    get_topic(%{"id" => topic_id})
+    |> Repo.preload(:comments)
+  end
+
   def update_topic(%{"id" => topic_id, "topic" => topic}) do
     old_topic = Repo.get(Topic, topic_id)
     changeset = Topic.changeset(old_topic, topic)
