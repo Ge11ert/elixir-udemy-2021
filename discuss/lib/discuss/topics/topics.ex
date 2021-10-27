@@ -36,7 +36,7 @@ defmodule Discuss.Topics do
 
   def get_topic_with_comments(%{"id" => topic_id}) do
     get_topic(%{"id" => topic_id})
-    |> Repo.preload(:comments)
+    |> Repo.preload(comments: [:user]) # Preloads all associations on the given struct with all nested associations
   end
 
   def update_topic(%{"id" => topic_id, "topic" => topic}) do

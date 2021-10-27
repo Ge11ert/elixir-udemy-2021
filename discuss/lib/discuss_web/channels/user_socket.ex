@@ -10,9 +10,8 @@ defmodule DiscussWeb.UserSocket do
       {:ok, user_id} ->
         {:ok, assign(socket, :user_id, user_id)}
       {:error, _error} ->
-        {:error}
+        {:ok, socket}
     end
-    {:ok, socket}
   end
 
   @impl true
